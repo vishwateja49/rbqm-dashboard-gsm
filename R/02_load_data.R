@@ -8,7 +8,6 @@
 
 # Load required library (already installed in 01_load_packages.R)
 library(clindata)
-
 ###############################################################################
 # Load Synthetic Data
 # NOTE:
@@ -16,14 +15,14 @@ library(clindata)
 # real clinical trial structures. They are SAFE for public repos.
 ###############################################################################
 
-# Example dataset: Subject-level data
-subject_data <- clindata::subject
+# Example dataset: demographics data
+demographics_data <- clindata::rawplus_dm
 
 # Example dataset: Visit-level data
-visit_data <- clindata::visit
+visit_data <- clindata::rawplus_visdt
 
 # Example dataset: AE (Adverse Events)
-ae_data <- clindata::ae
+ae_data <- clindata::rawplus_ae
 
 # Example dataset: Queries or data-entry related tables (if provided)
 # query_data <- clindata::query    # Uncomment if your workflow uses it
@@ -31,7 +30,7 @@ ae_data <- clindata::ae
 ###############################################################################
 # Inspect datasets
 ###############################################################################
-str(subject_data)
+str(demographics_data)
 str(visit_data)
 str(ae_data)
 
