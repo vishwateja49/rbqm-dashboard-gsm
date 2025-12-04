@@ -1,1 +1,101 @@
+###############################################################################
+# 05_export_results.R
+# Purpose:
+#   Export KRI final results, prediction bounds, and visualizations into the
+#   outputs/ folder as CSV and HTML files. This ensures reproducibility and a
+#   complete reporting pipeline for the RBQM workflow.
+###############################################################################
+
+# Load required libraries
+library(ggplot2)
+library(gsm.kri)
+library(gsm.reporting)
+library(htmlwidgets)
+library(gt)
+
+# Ensure outputs folder exists
+if (!dir.exists("outputs")) dir.create("outputs")
+
+###############################################################################
+# STEP 1 — Export Data Tables
+###############################################################################
+
+# 1. Export final KRI metric dataset
+write.csv(
+  kri001fin,
+  file = "outputs/kri001_final_metrics.csv",
+  row.names = FALSE
+)
+
+# 2. Export prediction bounds dataset
+write.csv(
+  kri001Bounds,
+  file = "outputs/kri001_prediction_bounds.csv",
+  row.names = FALSE
+)
+
+# 3. Optional reporting table export
+# write.csv(kri001_summary, "outputs/kri001_summary.csv", row.names = FALSE)
+
+###############################################################################
+# STEP 2 — Export Visual Outputs (HTML)
+# NOTE:
+#   - Widget_* visualizations produce HTML widgets.
+#   - These must be exported using saveWidget().
+#   - All files are saved INSIDE outputs/ (no hard-coded personal paths).
+###############################################################################
+
+## 2A. Scatter Plot Visualization
+scatter_widget <- Widget_ScatterPlot(
+  kri001fin,
+  lMetric = labels,
+  dfBounds = kri001Bounds
+)
+
+saveWidget(
+  scatter_widget,
+  file = "outputs/kri001_scatterplot.html",
+  selfcontained = TRUE
+)
+
+## 2B. Bar Chart Visualization
+bar_widget <- Widget_BarChart(
+  kri001fin,
+  lMetric = labels,
+  dfGroups = NULL,
+  vThreshold = NULL,
+  strOutcome = "Score",
+  bAddGroupSelect = TRUE,
+  strShinyGroupSelectID = "siteid",
+  bDebug = FALSE
+)
+
+saveWidget(
+  bar_widget,
+  file = "outputs/kri001_barchart.html",
+  selfcontained = TRUE
+)
+
+## 2C. Full Metric Visualization
+metric_visual <- Visualize_Metric(
+  dfResults = kri001fin,
+  dfBounds = kri001Bounds,
+  dfGroups = NULL,
+  dfMetrics = NULL,
+  strMetricID = "Analysis_kri0001",
+  strSnapshotDate = NULL,
+  bDebug = FALSE
+)
+
+# Export only the metric summary table as HTML (gt object)
+gtsave(
+  metric_visual$metricTable,
+  filename = "outputs/kri001_metric_table.html"
+)
+
+###############################################################################
+# STEP 3 — Confirmation Message
+###############################################################################
+
+message("✔ All KRI results and visualizations exported to outputs/ successfully.")
 
