@@ -38,8 +38,8 @@ rbqm-dashboard-gsm/
 │   ├── 01_load_packages.R
 │   ├── 02_load_data.R
 │   ├── 03_process_metrics_gsm.R
-│   ├── 04_generate_plots.R
-│   └── 05_export_results.R
+│   └── 04_generate_plots.R
+
 │
 ├── data/                   # Optional synthetic exports (if saved locally)
 │   └── sample_input.csv
