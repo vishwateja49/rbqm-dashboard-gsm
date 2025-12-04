@@ -33,16 +33,17 @@ All computations use **gsm**, while the visualizations are displayed through a s
 rbqm-dashboard-gsm/
 │
 ├── R/                 # Scripts for metric processing and visualization
-│   ├── ui.R
-│   ├── server.R
-│   └── helper_functions.R
+│   ├── 01_load_packages.R
+│   ├── 02_load_data.R
+│   ├── 03_process_metrics_gsm.R
+│   ├── 04_generate_plots.R
+│   └── 05_export_results.R
+
 │
 ├── data/              # Synthetic (dummy) datasets
 │   └── sample_input.csv
 │
 ├── outputs/           # Dashboard screenshots (optional)
-│
-├── docs/              # Additional documentation (optional)
 │
 ├── README.md          # Project overview
 │
