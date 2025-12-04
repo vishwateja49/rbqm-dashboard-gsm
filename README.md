@@ -1,29 +1,32 @@
-# RBQM Dashboard Using gsm Package
+# RBQM Analytics Workflow Using gsm Ecosystem (R-Based, Non‑Shiny)
 
-A clean, professional demonstration of a **Risk-Based Quality Management (RBQM)** dashboard built in **R**, using the **gsm** package to compute clinical metrics, and synthetic (dummy) data to mimic real-world study behavior. This project showcases practical clinical programming, metrics computation, and dashboard engineering.
+A clean, professional demonstration of a **Risk‑Based Quality Management (RBQM)** analytics workflow built entirely in **R**, using the modular **gsm ecosystem** (`gsm.core`, `gsm.mapping`, `gsm.kri`, `gsm.reporting`) and **synthetic clinical datasets** from the **clindata** package. This project showcases metric computation, RBQM workflows, KRI generation, and reproducible visualizations **without any Shiny app**.
 
 ---
 
 ## **Overview**
 
-This repository contains an R-based RBQM dashboard that visualizes key clinical trial oversight metrics such as:
+This repository demonstrates an end‑to‑end RBQM workflow that:
 
-* Enrollment patterns
-* Site performance indicators
-* Data quality and signal detection
-* Risk evaluation metrics generated via the gsm package
+* Loads synthetic clinical trial datasets from `clindata`
+* Transforms and maps data using **gsm.mapping**
+* Processes standardized data using **gsm.core**
+* Computes Key Risk Indicators (KRIs) using **gsm.kri**
+* Produces reporting summaries using **gsm.reporting**
+* Generates RBQM plots for enrollment, site‑level risk, and data quality trends
 
-All computations use **gsm**, while the visualizations are displayed through a structured R workflow. No confidential study data or organizational code is included.
+All computations use the gsm ecosystem, and all data shown here is **fully synthetic**.
 
 ---
 
 ## **Features**
 
-* Uses the **gsm** package for clinical metrics generation
-* Presents trial quality, enrollment, and risk indicators
-* Demonstrates end-to-end metric processing with synthetic data
-* Clean project structure suitable for recruiters and professionals
-* Reproducible and fully open-source
+* Uses **gsm.core**, **gsm.mapping**, **gsm.kri**, **gsm.reporting**, and **clindata**
+* Computes RBQM metrics end‑to‑end using only synthetic data
+* Produces enrollment, risk, and data‑quality visualizations
+* Clean, modular project structure suitable for recruiters and professionals
+* 100% reproducible and open‑source
+* No Shiny required — this is a pure R analytics workflow
 
 ---
 
@@ -32,22 +35,27 @@ All computations use **gsm**, while the visualizations are displayed through a s
 ```
 rbqm-dashboard-gsm/
 │
-├── R/                 # Scripts for metric processing and visualization
+├── R/                      # Core analytic scripts
 │   ├── 01_load_packages.R
 │   ├── 02_load_data.R
 │   ├── 03_process_metrics_gsm.R
 │   ├── 04_generate_plots.R
 │   └── 05_export_results.R
-
 │
-├── data/              # Synthetic (dummy) datasets
+├── data/                   # Optional synthetic exports (if saved locally)
 │   └── sample_input.csv
 │
-├── outputs/           # Dashboard screenshots (optional)
+├── outputs/                # Generated plots and metric outputs
+│   ├── enrollment_trend.png
+│   ├── site_risk_distribution.png
+│   └── final_metrics.csv
 │
-├── README.md          # Project overview
+├── docs/                   # Optional documentation
+│   └── workflow_overview.md
 │
-└── LICENSE            # MIT License
+├── README.md               # Project overview
+├── LICENSE                 # MIT License
+└── .gitignore
 ```
 
 ---
@@ -57,54 +65,73 @@ rbqm-dashboard-gsm/
 Install required libraries:
 
 ```r
-install.packages(c("gsm", "tidyverse", "ggplot2", "shinydashboard", "shiny"))
+# Install remotes if not available
+install.packages("remotes")
+library(remotes)
+
+# Install gsm ecosystem packages from GitHub
+install_github("Gilead-BioStats/clindata")
+install_github("Gilead-BioStats/gsm.core")
+install_github("Gilead-BioStats/gsm.mapping")
+install_github("Gilead-BioStats/gsm.kri")
+install_github("Gilead-BioStats/gsm.reporting")
+
+# CRAN packages
+install.packages(c("dplyr", "tidyr", "ggplot2", "readr"))
 ```
 
 ---
 
-## **How to Run the Dashboard**
+## **How to Run the Workflow**
 
-1. Clone the repository:
-
-```bash
-git clone https://github.com/yourusername/rbqm-dashboard-gsm.git
-```
-
-2. Open the project in RStudio.
-3. Load required packages.
-4. Run the application:
+Run each script sequentially:
 
 ```r
-shiny::runApp()
+source("R/01_load_packages.R")     # Load gsm + tidyverse
+source("R/02_load_data.R")         # Load clindata synthetic datasets
+source("R/03_process_metrics_gsm.R")  # Run mapping → core → KRI → reporting
+source("R/04_generate_plots.R")    # Generate RBQM visuals
+source("R/05_export_results.R")    # Optional: export metrics to CSV
 ```
+
+All output plots and metric files will appear in the **outputs/** folder.
 
 ---
 
 ## **Data Disclaimer**
 
-All datasets included in this repository are **fully synthetic** and do not contain any PHI, PII, or confidential study information. They are generated solely for demonstration and training purposes.
+All datasets used in this repository come from the **clindata** package and are **fully synthetic**. They contain **no PHI, PII, or proprietary study data**.
 
 ---
 
 ## **License**
 
-This project is released under the **MIT License**, enabling open use while protecting ownership of the contributed material.
+This project is released under the **MIT License**, enabling open use while protecting the author's ownership of contributed materials.
 
 ---
 
 ## **Acknowledgment**
 
-This project uses the **gsm** package from the Gilead BioStats team to compute clinical metrics. The dashboard implementation, structure, and dummy datasets are independently created.
+This project uses the gsm ecosystem created by the **Gilead BioStats** team:
+
+* `gsm.core`
+* `gsm.mapping`
+* `gsm.kri`
+* `gsm.reporting`
+* `clindata`
+
+Dashboard logic, workflow structure, plots, and scripting are independently designed for educational and portfolio demonstration purposes.
 
 ---
 
 ## **Purpose**
 
-This repository is designed to demonstrate:
+This repository demonstrates:
 
-* Clinical programming capability
-* Real-world RBQM understanding
-* R workflow and dashboard design
-* Industry-ready coding practices
+* Clinical programming and RBQM analytics skills
+* Ability to work with the gsm modular ecosystem
+* End‑to‑end KRI generation and reporting pipeline
+* Clean R workflow design with reproducibility
+* Real‑world trial oversight understanding using synthetic data
 
-Use it as a portfolio piece to communicate competence in analytics-driven clinical oversight.
+Use this repository as a portfolio piece to communicate competence in **RBQM analytics**, **clinical data transformation**, and **R‑based metric engineering**.
