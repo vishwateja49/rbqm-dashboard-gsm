@@ -1,4 +1,4 @@
-# RBQM Analytics Workflow Using gsm Ecosystem (R-Based, Non‑Shiny)
+# RBQM Analytics Workflow Using gsm Ecosystem  
 
 A clean, professional demonstration of a **Risk‑Based Quality Management (RBQM)** analytics workflow built entirely in **R**, using the modular **gsm ecosystem** (`gsm.core`, `gsm.mapping`, `gsm.kri`, `gsm.reporting`) and **synthetic clinical datasets** from the **clindata** package. This project showcases metric computation, RBQM workflows, KRI generation, and reproducible visualizations **without any Shiny app**.
 
@@ -25,8 +25,7 @@ All computations use the gsm ecosystem, and all data shown here is **fully synth
 * Computes RBQM metrics end‑to‑end using only synthetic data
 * Produces enrollment, risk, and data‑quality visualizations
 * Clean, modular project structure suitable for recruiters and professionals
-* 100% reproducible and open‑source
-* No Shiny required — this is a pure R analytics workflow
+* 100% reproducible and open‑source 
 
 ---
 
