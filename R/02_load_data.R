@@ -47,7 +47,7 @@ str(ae_data)
 # This ensures that anyone who runs your repo gets identical datasets.
 ###############################################################################
 
-# readr::write_csv(subject_data, "data/demographics_data.csv")
+# readr::write_csv(demographics_data, "data/demographics_data.csv")
 # readr::write_csv(visit_data, "data/visit_data.csv")
 # readr::write_csv(ae_data, "data/ae_data.csv")
 
