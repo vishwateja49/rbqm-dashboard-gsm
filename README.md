@@ -42,19 +42,18 @@ rbqm-dashboard-gsm/
 │   ├── 01_load_packages.R
 │   ├── 02_load_data.R
 │   ├── 03_process_metrics_gsm.R
-│   └── 04_generate_plots.R
-
+|   ├── 04_generate_plots.R
+│   └── 05_export_results
+│
+├── output/                # Generated plots and metric outputs
+│   ├── Bar_Chart.png
+│   ├── Scatter Plot.png
+│   ├── metric table.png
+│   └── kri001_final_metrics.csv
+│
 │
 ├── data/                   # Optional synthetic exports (if saved locally)
-│   └── sample_input.csv
-│
-├── outputs/                # Generated plots and metric outputs
-│   ├── enrollment_trend.png
-│   ├── site_risk_distribution.png
-│   └── final_metrics.csv
-│
-├── docs/                   # Optional documentation
-│   └── workflow_overview.md
+│   └── library(clindata)
 │
 ├── README.md               # Project overview
 ├── LICENSE                 # MIT License
