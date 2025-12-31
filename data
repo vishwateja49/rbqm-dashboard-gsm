@@ -1,1 +1,4 @@
 
+# Load clindata package (already installed in 01_load_packages.R)
+remotes::install_github("Gilead-BioStats/clindata", quiet = TRUE)
+library(clindata)
